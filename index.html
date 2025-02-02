@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Serious Question</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ff758c;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-in-out;
+            max-width: 90%;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: white;
+        }
+
+        button {
+            background: #ff477e;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100px;
+        }
+
+        button:hover {
+            background: #ff1e56;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .message {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            max-width: 80%;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #ff477e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="questionContainer">
+        <h1 id="question">Hey, can I ask you a serious question? 🤔</h1>
+        <p id="subtext">It's a matter of life and death... 💀❤️</p>
+        <button onclick="proceedToNextQuestion()">Yes</button>
+        <button onclick="showNoMessage()">No</button>
+    </div>
+
+    <div class="container hidden" id="valentineContainer">
+        <h1>Will you be my Valentine? 💘</h1>
+        <p>Please say yes! 😍</p>
+        <button onclick="showLoveLetter()">Yes</button>
+        <button onclick="showLoveLetter()">Yes</button>
+    </div>
+
+    <div class="message hidden" id="responseMessage"></div>
+
+    <script>
+        function proceedToNextQuestion() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('valentineContainer').classList.remove('hidden');
+        }
+        function showLoveLetter() {
+            document.getElementById('valentineContainer').classList.add('hidden');
+            let message = document.getElementById('responseMessage');
+            message.innerHTML = `
+                <h2>My Love Letter to You 💌</h2>
+                <p>My dearest love,</p>
+                <p>From the moment we met, you have been the light of my life. Your smile melts my heart, and your laughter is my favorite melody. Every second with you feels like a dream, and I wouldn’t trade it for anything in the world.</p>
+                <p>You are my happiness, my safe place, and my greatest love. Today, tomorrow, and always, I want to cherish every moment with you. Thank you for being my Valentine, my love, my everything. ❤️</p>
+                <p>Forever yours,</p>
+                <p><strong>Your Love
+                     Samarpan</strong></p>
+            `;
+            message.classList.remove('hidden');
+        }
+        function showNoMessage() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            let message = document.getElementById('responseMessage');
+            message.textContent = "💔😢 Oh no... my heart is shattered...";
+            message.classList.remove('hidden');
+        }
+    </script>
+</body>
+
+</html>
